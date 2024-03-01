@@ -3,12 +3,14 @@ import QRCode from "react-qr-code";
 function App() {
   const [input, setinput] = useState("");
   const [qr, setqr] = useState("");
-
-  function handle(e) {
+  function handleKeyPress(e) {
     if (e.key === "Enter") {
-      setqr(input);
-      setinput("");
+      handle();
     }
+  }
+  function handle(e) {
+    setqr(input);
+    setinput("");
   }
 
   return (
@@ -16,9 +18,9 @@ function App() {
       <h1 className="  font-mono text-6xl text-center underline my-5  ">
         QR CODE GENERATOR
       </h1>
-      <div className="mt-5">
+      <div className="mt-5 flex items-center justify-center">
         <input
-          onKeyDown={handle}
+          onKeyDown={handleKeyPress}
           className=" p-3 rounded-xl text-center  bg-purple-200 border border-violet-900"
           type="text"
           value={input}
